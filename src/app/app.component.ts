@@ -9,6 +9,8 @@ import {HttpClient} from "@angular/common/http";
 export class AppComponent {
   title = 'GingerPen-UI';
   code: string = "";
+  editorOptions = {theme: 'vs-dark', language: 'java'};
+
 
   
 constructor(private http:HttpClient) {
