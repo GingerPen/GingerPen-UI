@@ -17,13 +17,18 @@
 
     <section>
       <div class="codeEditor">
-        <textarea
+        <!-- <textarea
           name=""
           id="codeArea"
           cols="30"
           rows="10"
           [(ngModel)]="code"
-        ></textarea>
+        ></textarea> -->
+        <ngx-monaco-editor
+          style="height: 70vh; width: 70vw"
+          [options]="editorOptions"
+          [(ngModel)]="code"
+        ></ngx-monaco-editor>
         <h1>{{ code }}</h1>
       </div>
       <button type="submit" (click)="runCode()">Run Code</button>
