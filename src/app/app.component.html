@@ -7,27 +7,6 @@
     <title>Document</title>
   </head>
   <body>
-    <nav>
-      <div class="navbar">
-        <div class="logo">
-          <h2>GingerPen</h2>
-        </div>
-      </div>
-    </nav>
-
-    <section>
-      <div class="codeEditor">
-
-        <ngx-monaco-editor
-          style="height: 70vh; width: 70vw"
-          [options]="editorOptions"
-          [(ngModel)]="code"
-        ></ngx-monaco-editor>
-        <h1>{{ output }}</h1>
-      </div>
-      <button type="submit" (click)="runCode()">Run Code</button>
-    </section>
+    <router-outlet></router-outlet>
   </body>
 </html>
-
-<router-outlet></router-outlet>

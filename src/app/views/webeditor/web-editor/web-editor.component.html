@@ -1,0 +1,36 @@
+<div class="container">
+  <app-top-navbar></app-top-navbar>
+  <div class="changeEditorButtons">
+    <button (click)="changeEditor('HTML')">HTML</button>
+    <button (click)="changeEditor('CSS')">CSS</button>
+    <button (click)="changeEditor('JS')">JS</button>
+  </div>
+  <div class="editors">
+    <div class="html" *ngIf="div1">
+      <ngx-monaco-editor
+        style="min-height: 100%; max-width: 100%"
+        [options]="htmlEditorOptions"
+        [(ngModel)]="htmlCode"
+      ></ngx-monaco-editor>
+    </div>
+    <div class="css" *ngIf="div2">
+      <ngx-monaco-editor
+        style="min-height: 100%; max-width: 100%"
+        [options]="cssEditorOptions"
+        [(ngModel)]="cssCode"
+      ></ngx-monaco-editor>
+    </div>
+    <div class="javascript" *ngIf="div3">
+      <ngx-monaco-editor
+        style="min-height: 100%; max-width: 100%"
+        [options]="jsEditorOptions"
+        [(ngModel)]="jsCode"
+      ></ngx-monaco-editor>
+    </div>
+  </div>
+  <div class="output">
+    <div [innerHtml]="htmlCode">
+      {{ htmlCode }}
+    </div>
+  </div>
+</div>

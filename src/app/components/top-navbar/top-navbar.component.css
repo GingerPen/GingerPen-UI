@@ -1,0 +1,22 @@
+nav {
+  min-height: 100%;
+  background-color: var(--clr-primary-900);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navlinks a {
+  margin-right: 1rem;
+}
+
+.logo {
+  margin-left: 2rem;
+}
+
+
+h2 {
+  font-family: var(--ff-handwritten);
+  color: white;
+  font-size: 1.6rem;
+}
