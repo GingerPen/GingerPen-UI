@@ -17,7 +17,7 @@ export class CodeEditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.code = `
-    class HelloWorld {
+    class GingerPen {
         public static void main(String[] args) {
             System.out.println("Hello, World!"); 
         }
