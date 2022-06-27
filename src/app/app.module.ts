@@ -10,6 +10,7 @@ import { CodeEditorComponent } from "./views/code-editor/code-editor.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { WebEditorComponent } from "./views/webeditor/web-editor/web-editor.component";
 import { TopNavbarComponent } from "./components/top-navbar/top-navbar.component";
+import { SaveModalComponent } from './components/save-modal/save-modal.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TopNavbarComponent } from "./components/top-navbar/top-navbar.component
     CodeEditorComponent,
     WebEditorComponent,
     TopNavbarComponent,
+    SaveModalComponent,
   ],
   imports: [
     BrowserModule,

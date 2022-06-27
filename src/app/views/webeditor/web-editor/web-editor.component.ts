@@ -12,6 +12,7 @@ export class WebEditorComponent implements OnInit {
   cssCode: string = "/* CSS Goes Here */";
   jsCode: string = "/* Javascript Goes here */";
   output: string = "";
+  editorButtons: boolean = true;
   htmlEditorOptions = { theme: "vs-dark", language: "html" };
   cssEditorOptions = { theme: "vs-dark", language: "css" };
   jsEditorOptions = { theme: "vs-dark", language: "javascript" };
@@ -56,11 +57,13 @@ export class WebEditorComponent implements OnInit {
       this.div1 = true;
       this.div2 = true;
       this.div3 = true;
+      this.editorButtons = false;
       console.log("this fired");
     } else {
       this.div1 = true;
       this.div2 = false;
       this.div3 = false;
+      this.editorButtons = true;
     }
   }
   constructor() {}

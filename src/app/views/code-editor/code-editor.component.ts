@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -9,19 +9,38 @@ import { HttpClient } from "@angular/common/http";
 export class CodeEditorComponent implements OnInit {
   lang = "java";
   title = "GingerPen-UI";
-  code: string = "";
+  code: string = `
+  class GingerPen {
+      public static void main(String[] args) {
+          System.out.println("Hello, World!"); 
+      }
+  }`;
   output: string = "";
+  outputWindow: boolean = true;
+  editorWindow: boolean = true;
   editorOptions = { theme: "vs-dark", language: this.lang };
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-    this.code = `
-    class GingerPen {
-        public static void main(String[] args) {
-            System.out.println("Hello, World!"); 
-        }
-    }`;
+  changeView(editortype: string) {
+    switch (editortype) {
+      case "code":
+        this.editorWindow = true;
+        this.outputWindow = false;
+        break;
+      case "output":
+        this.editorWindow = false;
+        this.outputWindow = true;
+        break;
+    }
+  }
+  getScreenWidth: any;
+  getScreenHeight: any;
+
+  ngOnInit() {
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
+    this.onWindowResize();
   }
 
   runCode() {
@@ -31,7 +50,7 @@ export class CodeEditorComponent implements OnInit {
 
     this.output = "running...";
     this.http
-      .post<any>("http://localhost:8080/code/runcode", {
+      .post<any>("https://gingerpen-backend.azurewebsites.net/code/runcode", {
         language: this.lang,
         code: this.code,
       })
@@ -40,5 +59,22 @@ export class CodeEditorComponent implements OnInit {
         console.log(data);
         this.output = data.message;
       });
+  }
+
+  @HostListener("window:resize", ["$event"])
+  onWindowResize() {
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
+    if (this.getScreenWidth >= 768) {
+      this.editorWindow = true;
+      this.outputWindow = true;
+      const buttons = document.querySelector(".changeViewButtons");
+      console.log(buttons);
+      buttons?.parentNode?.removeChild(buttons);
+      console.log("this fired");
+    } else {
+      this.editorWindow = true;
+      this.outputWindow = false;
+    }
   }
 }

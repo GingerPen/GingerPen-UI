@@ -96,7 +96,8 @@ button {
 }
 
 button:hover {
-  background: var(--clr-primary-800);
+  background: var(--clr-primary-600);
+  cursor: pointer;
 }
 
 

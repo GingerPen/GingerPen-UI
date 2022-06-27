@@ -1,5 +1,18 @@
 <nav>
   <div class="logo">
     <h2>GingerPen</h2>
+    <div class="penInfo">
+      <span class="penname">Untitled</span>
+      <span class="username">Anonymous</span>
+    </div>
+  </div>
+  <div class="links">
+    <button (click)="showSaveModal()">Save</button>
+    <button>Login</button>
+    <button>Sign up</button>
+  </div>
+
+  <div class="modal" *ngIf="showModal">
+    <app-save-modal></app-save-modal>
   </div>
 </nav>

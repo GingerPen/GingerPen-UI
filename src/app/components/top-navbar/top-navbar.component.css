@@ -4,19 +4,39 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
-.navlinks a {
-  margin-right: 1rem;
+.links button {
+  margin-right: 0.5em;
+  width: 5em;
+  border-radius: 5px;
 }
 
 .logo {
   margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.logo .penInfo span {
+  display: block;
+  margin-left: 1em;
+  font-size: 0.7em;
+
 }
 
 
 h2 {
   font-family: var(--ff-handwritten);
   color: white;
-  font-size: 1.6rem;
+  font-size: 0.8em;
+}
+
+@media(min-width:47em) {
+
+  h2 {
+    font-size: 1em;
+  }
 }

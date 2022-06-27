@@ -2,10 +2,15 @@
 
 :root {
 
-  --clr-primary-100: #ffffff;
+  /* --clr-primary-100: #ffffff;
   --clr-primary-800: #201634;
   --clr-primary-700: #483372;
-  --clr-primary-900: #1c1423;
+  --clr-primary-900: #1c1423; */
+  --clr-primary-100: #ffffff;
+  --clr-primary-500: #00394F;
+  --clr-primary-600: #000506;
+  --clr-primary-700: #001219;
+  --clr-primary-900: #000000;
   --ff-primary: 'Roboto', sans-serif;
   --ff-accent: 'Open Sans', sans-serif;
   --ff-handwritten: 'Pacifico';
@@ -81,13 +86,12 @@ button {
   width: 90px;
   height: 50px;
   color: white;
-  background-color: var(--clr-primary-700);
+  background-color: var(--clr-primary-500);
   padding: 10px;
-  text-decoration: none;
   border: 0px;
-  border-radius: 10px;
+  border-radius: 2px;
 }
 
 button:hover {
-  background-color: var(--clr-primary-800);
+  background-color: var(--clr-primary-600);
 }
