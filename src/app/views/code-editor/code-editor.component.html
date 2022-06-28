@@ -1,16 +1,22 @@
 <div class="container">
-  <app-top-navbar></app-top-navbar>
-  <div class="codeEditor">
-    <ngx-monaco-editor
-      style="min-height: 100%; max-width: 100%"
-      [options]="editorOptions"
-      [(ngModel)]="code"
-    ></ngx-monaco-editor>
+  <app-top-navbar [editor]="true"></app-top-navbar>
+  <div class="views">
+    <div class="changeViewButtons">
+      <button (click)="changeView('code')">Code</button>
+      <button (click)="changeView('output')">Output</button>
+    </div>
+    <div class="codeEditor" *ngIf="editorWindow">
+      <ngx-monaco-editor
+        style="min-height: 100%; max-width: 100%"
+        [options]="editorOptions"
+        [(ngModel)]="code"
+      ></ngx-monaco-editor>
+    </div>
+    <div class="output" *ngIf="outputWindow">
+      {{ output }}
+    </div>
     <button id="runcode-button" type="submit" (click)="runCode()">
       Run Code
     </button>
-  </div>
-  <div class="output">
-    {{ output }}
   </div>
 </div>

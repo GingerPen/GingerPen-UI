@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 0.1fr 1fr;
   background-color: var(--clr-primary-700);
+  background: linear-gradient(250deg, var(--clr-primary-900), var(--clr-primary-500));
   min-height: 100%;
   min-width: 100%;
   font-family: 'Open Sans', sans-serif;
@@ -96,7 +97,8 @@ button {
 }
 
 button:hover {
-  background: var(--clr-primary-800);
+  background: var(--clr-primary-600);
+  cursor: pointer;
 }
 
 
