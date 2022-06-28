@@ -1,0 +1,46 @@
+<div class="container">
+  <app-top-navbar></app-top-navbar>
+  <div class="register-container">
+    <h2>Sign Up!</h2>
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+      <input
+        required
+        type="text"
+        placeholder="Email"
+        name="email"
+        [(ngModel)]="userdetails.email"
+      />
+      <input
+        required
+        type="text"
+        placeholder="Name"
+        name="name"
+        [(ngModel)]="userdetails.name"
+      />
+      <input
+        required
+        type="text"
+        placeholder="Username"
+        name="username"
+        [(ngModel)]="userdetails.username"
+      />
+      <input
+        required
+        type="password"
+        placeholder="Password"
+        name="password"
+        [(ngModel)]="userdetails.password"
+      />
+      <input
+        required
+        type="password"
+        placeholder="Confirm Password"
+        name="password"
+        [(ngModel)]="userdetails.confirmPass"
+      />
+      <button type="submit" [disabled]="!registerForm.form.valid">
+        Sign-Up
+      </button>
+    </form>
+  </div>
+</div>

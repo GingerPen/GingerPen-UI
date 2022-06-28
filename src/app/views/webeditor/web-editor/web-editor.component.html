@@ -1,5 +1,5 @@
 <div class="container">
-  <app-top-navbar></app-top-navbar>
+  <app-top-navbar [editor]="true"></app-top-navbar>
   <div class="changeEditorButtons" *ngIf="editorButtons">
     <button (click)="changeEditor('HTML')">HTML</button>
     <button (click)="changeEditor('CSS')">CSS</button>
@@ -8,6 +8,7 @@
   <div class="editors">
     <div class="html" *ngIf="div1">
       <ngx-monaco-editor
+        (keypress)="runCode()"
         style="min-height: 90%; max-width: 100%"
         [options]="htmlEditorOptions"
         [(ngModel)]="htmlCode"
@@ -28,9 +29,9 @@
       ></ngx-monaco-editor>
     </div>
   </div>
-  <div class="output">
+  <div id="output">
     <div [innerHtml]="htmlCode">
-      {{ htmlCode }}
+      {{ output }}
     </div>
   </div>
 </div>

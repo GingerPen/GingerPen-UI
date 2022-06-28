@@ -1,0 +1,37 @@
+.container {
+  display: grid;
+  grid-template-rows: 0.1fr 0.9fr;
+  max-width: 100%;
+  min-height: 100%;
+  font-family: var(--ff-handwritten);
+  background: radial-gradient(var(--clr-primary-900), var(--clr-primary-500));
+  background: linear-gradient(0deg, var(--clr-primary-900), var(--clr-primary-500));
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  padding: 1em;
+  max-width: 50%;
+  margin: auto auto;
+  border: solid 1px rgb(24, 24, 24);
+  text-align: center;
+  min-height: fit-content;
+  background-color: var(--clr-primary-900);
+}
+
+input {
+
+  display: block;
+  border-radius: 2em;
+  padding: 0.2em;
+  font-size: 1.2em;
+  margin: 1em auto;
+  max-width: 90%;
+}
+
+button {
+  border-radius: 0.8em;
+}

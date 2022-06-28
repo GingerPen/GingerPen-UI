@@ -45,20 +45,22 @@ export class CodeEditorComponent implements OnInit {
 
   runCode() {
     this.http.get("http://localhost:8080/").subscribe((data) => {
-      console.warn(data);
+      console.log(data);
     });
 
     this.output = "running...";
-    this.http
-      .post<any>("https://gingerpen-backend.azurewebsites.net/code/runcode", {
-        language: this.lang,
-        code: this.code,
-      })
-      .subscribe((data) => {
-        console.log(this.code);
-        console.log(data);
-        this.output = data.message;
-      });
+    try {
+      this.http
+        .post<any>("http://localhost:8080/code/runCode", {
+          language: this.lang,
+          code: this.code,
+        })
+        .subscribe((data) => {
+          this.output = data.message;
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   @HostListener("window:resize", ["$event"])

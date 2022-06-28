@@ -1,0 +1,23 @@
+<div class="container">
+  <app-top-navbar></app-top-navbar>
+  <div class="login-container">
+    <h2>Log In!</h2>
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <input
+        required
+        type="text"
+        placeholder="Email or Username"
+        name="data"
+        [(ngModel)]="data"
+      />
+      <input
+        required
+        type="password"
+        placeholder="Password"
+        name="password"
+        [(ngModel)]="password"
+      />
+      <button type="submit" [disabled]="!loginForm.form.valid">Login</button>
+    </form>
+  </div>
+</div>

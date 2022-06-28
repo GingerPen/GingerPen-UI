@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { SaveModalComponent } from "src/app/components/save-modal/save-modal.component";
 @Component({
   selector: "app-top-navbar",
@@ -8,6 +8,9 @@ import { SaveModalComponent } from "src/app/components/save-modal/save-modal.com
 export class TopNavbarComponent implements OnInit {
   constructor() {}
   showModal: boolean = false;
+  @Input()
+  editor: boolean = false;
+
   obj: SaveModalComponent = new SaveModalComponent();
   ngOnInit(): void {}
 
