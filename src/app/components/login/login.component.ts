@@ -12,11 +12,17 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.http
-      .post("http://localhost:8080/auth/login", {
-        data: this.data,
-        password: this.password,
-      })
-      .subscribe(() => {});
+      .post(
+        "http://localhost:8080/auth/login",
+        {
+          data: this.data,
+          password: this.password,
+        },
+        { withCredentials: true }
+      )
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 
   constructor(private http: HttpClient) {}
