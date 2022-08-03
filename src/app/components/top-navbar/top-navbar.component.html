@@ -9,6 +9,7 @@
   <div class="links">
     <button *ngIf="userName == 'Untitled'" routerLink="/login">Login</button>
     <button *ngIf="userName == 'Untitled'" routerLink="/register">Sign up</button>
+    <button *ngIf="userName != 'Untitled'" (click)="logout()">Logout</button>
   </div>
 
   <div class="modal" *ngIf="showModal">
