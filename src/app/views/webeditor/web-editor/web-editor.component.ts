@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from "@angular/core";
+import { Component, OnInit, HostListener, OnChanges } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { HttpClient } from "@angular/common/http";
 
@@ -7,14 +7,14 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: "./web-editor.component.html",
   styleUrls: ["./web-editor.component.css"],
 })
-export class WebEditorComponent implements OnInit {
+export class WebEditorComponent implements OnInit, OnChanges {
   title = "GingerPen-UI";
   htmlCode: string = "<!-- HTML Goes Here  -->";
   cssCode: string = "/* CSS Goes Here */";
   jsCode: string = "/* Javascript Goes here */";
   code: string = "";
   language: string = "html";
-  output: string = "";
+
   editorButtons: boolean = true;
   htmlEditorOptions = { theme: "vs-dark", language: "html" };
   cssEditorOptions = { theme: "vs-dark", language: "css" };
@@ -31,8 +31,27 @@ export class WebEditorComponent implements OnInit {
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;
     this.onWindowResize();
-    this.createHtml();
+    //  this.createHtml();
   }
+  runWebCode() {
+    let frame: any = document.getElementById("codeOutput");
+    frame = frame.contentDocument || frame.contentWindow;
+    frame.open();
+    frame.writeln(
+      this.htmlCode +
+        "<style>" +
+        this.cssCode +
+        "</style>" +
+        "<script>" +
+        this.jsCode +
+        "</script>"
+    );
+  }
+
+  ngOnChanges() {
+    this.runWebCode();
+  }
+
   changeEditor(editortype: string) {
     switch (editortype) {
       case "HTML":
@@ -51,8 +70,6 @@ export class WebEditorComponent implements OnInit {
         this.div3 = true;
         break;
     }
-
-    console.log(this.div1, this.div2, this.div3);
   }
 
   @HostListener("window:resize", ["$event"])
@@ -64,7 +81,6 @@ export class WebEditorComponent implements OnInit {
       this.div2 = true;
       this.div3 = true;
       this.editorButtons = false;
-      console.log("this fired");
     } else {
       this.div1 = true;
       this.div2 = false;
@@ -72,32 +88,4 @@ export class WebEditorComponent implements OnInit {
       this.editorButtons = true;
     }
   }
-
-  runCode() {
-    // this.http.get("http://localhost:8080/").subscribe((data) => {
-    //   console.log(data);
-    // });
-
-    this.output = "running...";
-    this.code = this.htmlCode + "/$/" + this.cssCode + "/$/" + this.jsCode;
-    try {
-      this.http
-        .post<any>("http://localhost:8080/code/runCode", {
-          language: this.language,
-          code: this.code,
-        })
-        .subscribe((data) => {
-          console.log(data);
-          this.output = data.message;
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  createHtml = () => {
-    const node = document.createElement("html");
-    document.querySelector("#output")?.appendChild(node);
-    console.log("ran");
-  };
 }

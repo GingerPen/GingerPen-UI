@@ -33,7 +33,7 @@ import { RegisterComponent } from "./components/register/register.component";
     MonacoEditorModule.forRoot(),
     FontAwesomeModule, //
   ],
-  providers: [],
+  providers: [{ provide: Window, useValue: window }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

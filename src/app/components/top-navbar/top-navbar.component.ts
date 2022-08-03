@@ -11,6 +11,10 @@ export class TopNavbarComponent implements OnInit {
   @Input()
   editor: boolean = false;
 
+  userName: any = localStorage.getItem("UserName")
+    ? localStorage.getItem("UserName")
+    : "Untitled";
+
   obj: SaveModalComponent = new SaveModalComponent();
   ngOnInit(): void {}
 

@@ -7,11 +7,12 @@
   max-width: 100%;
 }
 
-#output {
+
+#codeOutput {
   background-color: white;
   color: black;
   min-height: 100%;
-  max-width: 100%;
+  width: 100vw;
 
 }
 
