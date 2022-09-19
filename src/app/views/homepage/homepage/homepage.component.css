@@ -164,3 +164,9 @@ a span:hover {
     opacity: 1;
   }
 }
+
+@media(max-width:281px) {
+  h1 {
+    font-size: 2em;
+  }
+}

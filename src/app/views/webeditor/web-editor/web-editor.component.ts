@@ -46,6 +46,7 @@ export class WebEditorComponent implements OnInit, OnChanges {
         this.jsCode +
         "</script>"
     );
+    
   }
 
   ngOnChanges() {
