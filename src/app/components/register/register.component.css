@@ -35,3 +35,22 @@ input {
 button {
   border-radius: 0.8em;
 }
+
+
+@media(max-width:47em) {
+  .register-container {
+    max-width: 80%;
+    font-size: 0.8em;
+  }
+
+  .input {
+    font-size: 0.7em;
+  }
+}
+
+@media(max-width:281px) {
+  .register-container {
+    max-width: 80%;
+    font-size: 0.7em;
+  }
+}
