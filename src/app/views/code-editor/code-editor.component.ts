@@ -25,6 +25,10 @@ export class CodeEditorComponent implements OnInit {
     : "Untitled";
   constructor(private http: HttpClient, private window: Window) {}
 
+  changeEditor() {
+    this.editorOptions = { theme: "vs-dark", language: this.lang };
+  }
+
   changeView(editortype: string) {
     switch (editortype) {
       case "code":
@@ -65,11 +69,16 @@ export class CodeEditorComponent implements OnInit {
   }
 
   runCode() {
+    if (window.innerWidth <= 768) {
+      this.editorWindow = false;
+      this.outputWindow = true;
+    }
     // this.http.get("http://localhost:8080/").subscribe((data) => {
     //   console.log(data);
     // });
 
     this.output = "running...";
+
     try {
       this.http
         .post<any>("https://gingerpen-backend.azurewebsites.net/code/runCode", {

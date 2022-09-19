@@ -43,6 +43,19 @@
 
 }
 
+#languages {
+  width: 30%;
+  position: absolute;
+  bottom: 2em;
+  padding-left: 1em;
+  font-size: 1em;
+  margin-left: 0.4em;
+  border-radius: 10px;
+  background-color: black;
+  color: #FFF;
+  max-height: 5em;
+}
+
 
 .changeViewButtons button {
   margin-right: 1em;
@@ -78,5 +91,12 @@
     max-width: 100%;
     min-height: 100%;
 
+  }
+
+  #languages {
+    border-radius: 0;
+    left: 0em;
+    bottom: 0.2em;
+    width: 46%;
   }
 }
