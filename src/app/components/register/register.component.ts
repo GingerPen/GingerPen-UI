@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { userModel } from "src/app/models/userModel";
 import { FormsModule } from "@angular/forms";
+import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -16,14 +17,18 @@ export class RegisterComponent implements OnInit {
     email: "",
     confirmPass: "",
   };
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   register() {
     console.log(this.userdetails);
     this.http
-      .post("http://localhost:8080/auth/signup", this.userdetails)
+      .post(
+        "https://gingerpen-backend.azurewebsites.net/auth/signup",
+        this.userdetails
+      )
       .subscribe((data) => {
         console.log(data);
+        this.router.navigate(["/login"]);
       });
   }
   ngOnInit(): void {}

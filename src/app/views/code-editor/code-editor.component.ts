@@ -18,9 +18,16 @@ export class CodeEditorComponent implements OnInit {
   output: string = "";
   outputWindow: boolean = true;
   editorWindow: boolean = true;
+  uid: any = localStorage.getItem("uid");
   editorOptions = { theme: "vs-dark", language: this.lang };
+  userName: any = localStorage.getItem("UserName")
+    ? localStorage.getItem("UserName")
+    : "Untitled";
+  constructor(private http: HttpClient, private window: Window) {}
 
-  constructor(private http: HttpClient) {}
+  changeEditor() {
+    this.editorOptions = { theme: "vs-dark", language: this.lang };
+  }
 
   changeView(editortype: string) {
     switch (editortype) {
@@ -43,15 +50,38 @@ export class CodeEditorComponent implements OnInit {
     this.onWindowResize();
   }
 
-  runCode() {
-    this.http.get("http://localhost:8080/").subscribe((data) => {
-      console.log(data);
-    });
-
-    this.output = "running...";
+  saveCode() {
     try {
       this.http
-        .post<any>("http://localhost:8080/code/runCode", {
+        .post<any>(
+          "https://gingerpen-backend.azurewebsites.net/code/savecode",
+          {
+            userId: this.uid,
+            codes: [{ format: "java", code: this.code }],
+          }
+        )
+        .subscribe((data) => {
+          this.output = data.message;
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  runCode() {
+    if (window.innerWidth <= 768) {
+      this.editorWindow = false;
+      this.outputWindow = true;
+    }
+    // this.http.get("http://localhost:8080/").subscribe((data) => {
+    //   console.log(data);
+    // });
+
+    this.output = "running...";
+
+    try {
+      this.http
+        .post<any>("https://gingerpen-backend.azurewebsites.net/code/runCode", {
           language: this.lang,
           code: this.code,
         })

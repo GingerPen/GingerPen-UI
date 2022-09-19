@@ -2,14 +2,14 @@
   <div class="logo">
     <h2 routerLink="/home">GingerPen</h2>
     <div class="penInfo">
-      <span class="penname">Untitled</span>
-      <span class="username">Anonymous</span>
+      <!-- <span class="penname">Untitled</span> -->
+      <span class="username">{{userName}}</span>
     </div>
   </div>
   <div class="links">
-    <button *ngIf="editor" (click)="showSaveModal()">Save</button>
-    <button routerLink="/login">Login</button>
-    <button routerLink="/register">Sign up</button>
+    <button *ngIf="userName == 'Untitled'" routerLink="/login">Login</button>
+    <button *ngIf="userName == 'Untitled'" routerLink="/register">Sign up</button>
+    <button *ngIf="userName != 'Untitled'" (click)="logout()">Logout</button>
   </div>
 
   <div class="modal" *ngIf="showModal">

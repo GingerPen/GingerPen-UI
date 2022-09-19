@@ -7,31 +7,22 @@
   </div>
   <div class="editors">
     <div class="html" *ngIf="div1">
-      <ngx-monaco-editor
-        (keypress)="runCode()"
-        style="min-height: 90%; max-width: 100%"
-        [options]="htmlEditorOptions"
-        [(ngModel)]="htmlCode"
-      ></ngx-monaco-editor>
+      <ngx-monaco-editor (keypress)="runWebCode()" style="min-height: 90%; max-width: 100%"
+        [options]="htmlEditorOptions" [(ngModel)]="htmlCode"></ngx-monaco-editor>
     </div>
     <div class="css" *ngIf="div2">
-      <ngx-monaco-editor
-        style="min-height: 90%; max-width: 100%"
-        [options]="cssEditorOptions"
-        [(ngModel)]="cssCode"
-      ></ngx-monaco-editor>
+      <ngx-monaco-editor (keypress)="runWebCode()" style="min-height: 90%; max-width: 100%" [options]="cssEditorOptions"
+        [(ngModel)]="cssCode">
+      </ngx-monaco-editor>
     </div>
     <div class="javascript" *ngIf="div3">
-      <ngx-monaco-editor
-        style="min-height: 90%; max-width: 100%"
-        [options]="jsEditorOptions"
-        [(ngModel)]="jsCode"
-      ></ngx-monaco-editor>
+      <ngx-monaco-editor (keypress)="runWebCode()" style="min-height: 90%; max-width: 100%" [options]="jsEditorOptions"
+        [(ngModel)]="jsCode">
+      </ngx-monaco-editor>
     </div>
   </div>
-  <div id="output">
-    <div [innerHtml]="htmlCode">
-      {{ output }}
-    </div>
-  </div>
+  <iframe id="codeOutput">
+
+  </iframe>
+
 </div>
