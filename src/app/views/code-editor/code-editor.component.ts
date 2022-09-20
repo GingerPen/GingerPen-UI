@@ -26,7 +26,12 @@ export class CodeEditorComponent implements OnInit {
   constructor(private http: HttpClient, private window: Window) {}
 
   changeEditor() {
-    this.editorOptions = { theme: "vs-dark", language: this.lang };
+    if (this.lang === "py") {
+      this.editorOptions = { theme: "vs-dark", language: "python" };
+    }
+    if (this.lang === "java") {
+      this.editorOptions = { theme: "vs-dark", language: "java" };
+    }
   }
 
   changeView(editortype: string) {
