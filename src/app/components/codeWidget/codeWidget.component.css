@@ -1,0 +1,33 @@
+section {
+  background-color: black;
+  padding: 1em;
+  margin: 1em 1em 1em 1em;
+  max-width: 20em;
+  overflow: hidden;
+  border-radius: 1em;
+  display: inline-block;
+}
+
+section:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  transition-duration: 200ms;
+}
+
+
+.code-widget-language {
+  color: yellow;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.code-widget-code {
+  background-color: var(--clr-primary-700);
+}
+
+
+@media(max-width:60em) {
+  .code-widget-container {
+    font-size: 0.5em;
+  }
+}

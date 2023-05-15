@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+
+<body>
+  <div class="container" [ngClass]="{
+    'conditional-container': isLoggedIn}">
+    <div class="sidebar">
+      <a routerLink="/code/:{{uniqueId}}" routerLinkActive="active">
+        <span><i class="fa-solid fa-code"></i></span></a>
+      <a routerLink="/web" routerLinkActive="active"><span><i class="fa-brands fa-html5"></i></span></a>
+    </div>
+
+
+    <div class="info" *ngIf="!isLoggedIn">
+      <h1>GingerPen</h1>
+      <h2>Write, Edit, Run......</h2>
+      <p>Use GingerPen to write run and edit your code on the go!</p>
+      <button class="btn-primary" type="submit" routerLink="/code/{{uniqueId}}">
+        Get Started
+      </button>
+    </div>
+
+    <div class="home-image" *ngIf="!isLoggedIn">
+      <i class="fa-brands fa-js"></i>
+      <i class="fa-brands fa-java"></i>
+      <i class="fa-brands fa-css3"></i>
+    </div>
+
+
+    <div class="info" *ngIf="isLoggedIn"
+      [ngStyle]="{'flex-direction': isLoggedIn ? 'row' : 'column','max-width' : '100%'  } ">
+
+      <span (click)="openCodeEditor($event)">
+        <app-codeWidget *ngFor="let code of codes" [language]="code.format" [code]="code.code"></app-codeWidget>
+      </span>
+
+    </div>
+
+  </div>
+
+
+
+</body>
+
+</html>

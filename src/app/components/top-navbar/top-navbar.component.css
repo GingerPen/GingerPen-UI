@@ -1,0 +1,67 @@
+nav {
+  min-height: 100%;
+  max-width: 100%;
+  background-color: var(--clr-primary-900);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.links {
+  display: inline-block;
+}
+
+.links button {
+  margin-bottom: 0.2em;
+  margin-right: 2px;
+  width: 4rem;
+  border-radius: 5px;
+  font-size: 0.5em;
+}
+
+.logo {
+  cursor: pointer;
+  margin-left: 2rem;
+  margin-right: 1em;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+h2:hover {
+  color: rgb(198, 198, 198)
+}
+
+.logo .penInfo span {
+  display: block;
+  margin-left: 1em;
+  font-size: 0.5em;
+
+}
+
+
+h2 {
+  font-family: var(--ff-handwritten);
+  color: white;
+  font-size: 0.8em;
+}
+
+
+
+@media(min-width:47em) {
+
+  .links button {
+    font-size: 0.8em;
+    margin-right: 0.2em;
+    width: 5rem;
+  }
+
+  .logo .penInfo span {
+    font-size: 0.8em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+}

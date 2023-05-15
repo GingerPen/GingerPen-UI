@@ -1,0 +1,27 @@
+<div class="container">
+  <app-top-navbar [editor]="true"></app-top-navbar>
+  <div class="views">
+    <div class="changeViewButtons">
+      <button (click)="changeView('code')">Code</button>
+      <button (click)="changeView('output')">Output</button>
+    </div>
+    <div class="codeEditor" *ngIf="editorWindow" (keydown)="syncCode()">
+      <select [(ngModel)]="lang" (change)="changeEditor()" name="languages" id="languages">
+        <option name="java" value="java">java</option>
+        <option name="python" value="python">python</option>
+      </select>
+      <ngx-monaco-editor style="height: 100%; width: 100%" [options]="editorOptions" [(ngModel)]="code">
+      </ngx-monaco-editor>
+
+    </div>
+    <div class="output" *ngIf="outputWindow">
+      {{ output }}
+    </div>
+    <button id="savecode-button" *ngIf="userName != 'Untitled'" (click)="saveCode()">Save</button>
+    <button id="runcode-button" type="submit" (click)="runCode()">
+      Run Code
+    </button>
+
+    <button id="clipboardButton" (click)="copyToClipboard()">Copy Shareable Link</button>
+  </div>
+</div>
