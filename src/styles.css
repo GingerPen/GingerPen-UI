@@ -8,7 +8,8 @@
   --clr-primary-900: #1c1423; */
   --clr-primary-100: #ffffff;
   --clr-primary-500: #00394F;
-  --clr-primary-600: #000506;
+  /* --clr-primary-600: #000506; */
+  --clr-primary-600: #00d5ff;
   --clr-primary-700: #001219;
   --clr-primary-900: #000000;
   --ff-primary: 'Roboto', sans-serif;
@@ -90,6 +91,8 @@ button {
   padding: 10px;
   border: 0px;
   border-radius: 2px;
+  cursor: pointer;
+  border-radius: 0.8em;
 }
 
 button:hover {

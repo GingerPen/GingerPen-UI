@@ -73,6 +73,7 @@
             },
             "development": {
               "browserTarget": "GingerPen-UI:build:development"
+             
               
             }
           },

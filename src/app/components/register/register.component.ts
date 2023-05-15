@@ -10,26 +10,25 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./register.component.css"],
 })
 export class RegisterComponent implements OnInit {
-  userdetails: userModel = {
+  private signInURL: string =
+    "https://gingerpen-backend.azurewebsites.net/auth/signup";
+
+  userDetails: userModel = {
     name: "",
     username: "",
     password: "",
     email: "",
     confirmPass: "",
   };
+
   constructor(private http: HttpClient, private router: Router) {}
 
   register() {
-    console.log(this.userdetails);
-    this.http
-      .post(
-        "https://gingerpen-backend.azurewebsites.net/auth/signup",
-        this.userdetails
-      )
-      .subscribe((data) => {
-        console.log(data);
-        this.router.navigate(["/login"]);
-      });
+    console.log(this.userDetails);
+    this.http.post(this.signInURL, this.userDetails).subscribe((data) => {
+      console.log(data);
+      this.router.navigate(["/login"]);
+    });
   }
   ngOnInit(): void {}
 }

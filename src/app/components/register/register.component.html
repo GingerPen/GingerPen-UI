@@ -3,41 +3,12 @@
   <div class="register-container">
     <h2>Sign Up!</h2>
     <form (ngSubmit)="register()" #registerForm="ngForm">
-      <input
-        required
-        type="text"
-        placeholder="Email"
-        name="email"
-        [(ngModel)]="userdetails.email"
-      />
-      <input
-        required
-        type="text"
-        placeholder="Name"
-        name="name"
-        [(ngModel)]="userdetails.name"
-      />
-      <input
-        required
-        type="text"
-        placeholder="Username"
-        name="username"
-        [(ngModel)]="userdetails.username"
-      />
-      <input
-        required
-        type="password"
-        placeholder="Password"
-        name="password"
-        [(ngModel)]="userdetails.password"
-      />
-      <input
-        required
-        type="password"
-        placeholder="Confirm Password"
-        name="password"
-        [(ngModel)]="userdetails.confirmPass"
-      />
+      <input required type="text" placeholder="Email" name="email" [(ngModel)]="userDetails.email" />
+      <input required type="text" placeholder="Name" name="name" [(ngModel)]="userDetails.name" />
+      <input required type="text" placeholder="Username" name="username" [(ngModel)]="userDetails.username" />
+      <input required type="password" placeholder="Password" name="password" [(ngModel)]="userDetails.password" />
+      <input required type="password" placeholder="Confirm Password" name="password"
+        [(ngModel)]="userDetails.confirmPass" />
       <button type="submit" [disabled]="!registerForm.form.valid">
         Sign-Up
       </button>

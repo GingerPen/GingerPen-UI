@@ -13,6 +13,9 @@ import { TopNavbarComponent } from "./components/top-navbar/top-navbar.component
 import { SaveModalComponent } from "./components/save-modal/save-modal.component";
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
+import { CodeWidget } from "./components/codeWidget/codeWidget.component";
+import { authService } from "./services/auth.service";
+import { codesService } from "./services/codes.service";
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { RegisterComponent } from "./components/register/register.component";
     SaveModalComponent,
     LoginComponent,
     RegisterComponent,
+    CodeWidget,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,7 @@ import { RegisterComponent } from "./components/register/register.component";
     MonacoEditorModule.forRoot(),
     FontAwesomeModule, //
   ],
-  providers: [{ provide: Window, useValue: window }],
+  providers: [{ provide: Window, useValue: window }, codesService, authService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

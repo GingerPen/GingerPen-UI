@@ -1,6 +1,10 @@
 .container {
   display: grid;
-  grid-template-columns: 0.1fr 1fr;
+  grid-template-rows: 20% 60% 20%;
+  grid-template-columns: 10% 90%;
+  /* grid-template-columns: 20% 40% 40%; */
+  grid-template-areas: ". info"". info"". info";
+  gap: 0em;
   background-color: var(--clr-primary-700);
   background: linear-gradient(250deg, var(--clr-primary-900), var(--clr-primary-500));
   min-height: 100%;
@@ -8,21 +12,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.info::before, .info::after {
-  font-family: var(--ff-handwritten);
-  content: '<html>';
-  margin-left: -1em;
-  color: var(--clr-primary-900);
-  font-size: 1.6rem;
-  font-style: italic;
-}
 
-.info::after {
-  content: '</html>';
-
-}
 
 .home-image {
+  grid-area: logo;
   animation: fade-in;
   animation-duration: 100ms;
   animation-timing-function: linear;
@@ -52,6 +45,7 @@
 
 
 .info {
+  grid-area: info;
   animation: fade-in;
   animation-duration: 800ms;
   animation-timing-function: linear;
@@ -59,12 +53,15 @@
   flex-direction: column;
   justify-content: center;
   color: rgb(228, 228, 224);
-  margin-left: 0rem;
+  margin-left: 2em;
+
 }
 
 .sidebar {
   max-width: 3.4rem;
+  height: 100%;
   display: flex;
+  position: fixed;
   flex-direction: column;
   justify-content: center;
   margin-right: 1.5em;
@@ -112,7 +109,7 @@ p {
 
 
 a span:hover {
-  color: var(--clr-primary-700);
+  color: yellow;
   display: hidden;
 }
 
@@ -121,6 +118,8 @@ a span:hover {
 .fa-html5 {
   font-size: 40px;
 }
+
+
 
 
 @media(min-width:60em) {
@@ -133,7 +132,27 @@ a span:hover {
 
 @media(min-width:40em) {
   .container {
-    grid-template-columns: 0.1fr 1fr 1fr;
+    grid-template-rows: 20% 60% 20%;
+    grid-template-columns: 50% 50%;
+    /* grid-template-areas: ". .""info logo"". .";
+    ; */
+    /*Remember To  fix not working big screen
+    */
+    grid-template-areas: " . .""info logo"".  .";
+    ;
+  }
+
+  .conditional-container {
+    grid-template-columns: 10% 80%;
+    grid-template-areas: "info info"
+      "info info"
+      "info info";
+
+  }
+
+  .info::after {
+    content: '</html>';
+
   }
 
   h1 {
@@ -145,13 +164,24 @@ a span:hover {
   }
 
   .info {
-    margin-left: 3em;
+    margin-left: 20%;
     margin-bottom: 2em;
   }
 
   .info::before, .info::after {
-    margin-left: -2em;
+    margin-left: -1em;
   }
+
+
+  .info::before, .info::after {
+    font-family: var(--ff-handwritten);
+    content: '<html>';
+    margin-left: -1em;
+    color: var(--clr-primary-900);
+    font-size: 1.6rem;
+    font-style: italic;
+  }
+
 
 }
 

@@ -37,6 +37,7 @@ input {
 
 button {
   border-radius: 0.8em;
+ 
 }
 
 @media(max-width:47em) {

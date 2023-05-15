@@ -12,7 +12,7 @@ const routes: Routes = [
   // { path: 'codeEditor', component: CodeEditorComponent },
   { path: "home", component: HomepageComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "code", component: CodeEditorComponent },
+  { path: "code/:id", component: CodeEditorComponent, pathMatch: "prefix" },
   { path: "web", component: WebEditorComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
