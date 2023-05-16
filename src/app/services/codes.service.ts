@@ -13,8 +13,8 @@ export class codesService {
 
   private getCodesURL: string =
     this.BASE_URL + "code/getcodelist/6299b7358221f50b8bf37f59";
-  private saveCodeURL = this.BASE_URL + "savecode";
-  private runCodeURL = this.BASE_URL + "runCode";
+  private saveCodeURL = this.BASE_URL + "code/savecode";
+  private runCodeURL = this.BASE_URL + "code/runcode";
 
   getCodes(): Observable<any> {
     return this.http.post(this.getCodesURL, {
