@@ -7,7 +7,7 @@ export class authService {
   constructor(private router: Router, private http: HttpClient) {}
   // private BASE_URL: string = "https://gingerpen-backend.azurewebsites.net";
   private BASE_URL: string = environment.backendUrl;
-  private loginURL = this.BASE_URL + "/auth/login";
+  private loginURL = this.BASE_URL + "auth/login";
 
   login(data: string, password: string) {
     return this.http.post<any>(
