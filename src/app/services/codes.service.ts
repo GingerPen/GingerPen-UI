@@ -1,16 +1,18 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class codesService {
   constructor(private http: HttpClient) {}
 
   // private BASE_URL = "https://gingerpen-backend.azurewebsites.net/code";
-  private BASE_URL = "http://localhost:8080/code";
+  private BASE_URL: string = environment.backendUrl;
+  // private BASE_URL = "http://localhost:8080/code";
 
   private getCodesURL: string =
-    this.BASE_URL + "/getcodelist/6299b7358221f50b8bf37f59";
+    this.BASE_URL + "code/getcodelist/6299b7358221f50b8bf37f59";
   private saveCodeURL = this.BASE_URL + "/savecode";
   private runCodeURL = this.BASE_URL + "/runCode";
 
