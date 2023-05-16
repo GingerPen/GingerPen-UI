@@ -5,7 +5,7 @@
       <button (click)="changeView('code')">Code</button>
       <button (click)="changeView('output')">Output</button>
     </div>
-    <div class="codeEditor" *ngIf="editorWindow" (keydown)="syncCode()">
+    <div class="codeEditor" *ngIf="editorWindow" (keyup)="syncCode()">
       <select [(ngModel)]="lang" (change)="changeEditor()" name="languages" id="languages">
         <option name="java" value="java">java</option>
         <option name="python" value="python">python</option>

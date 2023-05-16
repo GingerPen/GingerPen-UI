@@ -10,9 +10,8 @@ export class codesService {
   // private BASE_URL = "https://gingerpen-backend.azurewebsites.net/code";
   private BASE_URL: string = environment.backendUrl;
   // private BASE_URL = "http://localhost:8080/code";
-
-  private getCodesURL: string =
-    this.BASE_URL + "code/getcodelist/6299b7358221f50b8bf37f59";
+  private id = localStorage.getItem("uid");
+  private getCodesURL: string = this.BASE_URL + `code/getcodelist/${this.id}`;
   private saveCodeURL = this.BASE_URL + "code/savecode";
   private runCodeURL = this.BASE_URL + "code/runcode";
 

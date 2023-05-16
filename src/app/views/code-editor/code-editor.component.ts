@@ -13,12 +13,11 @@ import { codesService } from "src/app/services/codes.service";
 export class CodeEditorComponent implements OnInit {
   lang = "java";
   title = "GingerPen-UI";
-  code: string = `
-  class GingerPen {
-      public static void main(String[] args) {
-          System.out.println("Hello, World!"); 
-      }
-  }`;
+  code: string = `class GingerPen {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!"); 
+    }
+}`;
 
   output: string = "";
   sessionid: string = "";
@@ -114,17 +113,17 @@ export class CodeEditorComponent implements OnInit {
 
   syncCode() {
     if (this.check == true) {
-      //console.log("worked");
-      setTimeout(() => {
-        this.WebsocketService.emit("typed", {
-          code: this.code,
-          lang: this.lang,
-          sessionid: this.sessionid,
-        });
-        this.check = true;
-      }, 300);
+      console.log("worked");
+      // setTimeout(() => {
+      this.WebsocketService.emit("typed", {
+        code: this.code,
+        lang: this.lang,
+        sessionid: this.sessionid,
+      });
+      this.check = true;
+      // }, 0);
     }
-    this.check = false;
+    // this.check = false;
   }
 
   runCode() {
