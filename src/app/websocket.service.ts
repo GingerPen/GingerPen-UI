@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import * as io from "socket.io-client";
-
+import { environment } from "../environments/environment";
 @Injectable({
   providedIn: "root",
 })
 export class WebsocketService {
   private socket: any;
-  private socketURL = "http://localhost:8080/";
+  // private socketURL = "https://gingerpen-backend.azurewebsites.net/";
+  private socketURL = environment.backendUrl;
 
   constructor() {
     this.socket = io.connect(this.socketURL);
