@@ -10,8 +10,9 @@ export class codesService {
   // private BASE_URL = "https://gingerpen-backend.azurewebsites.net/code";
   private BASE_URL: string = environment.backendUrl;
   // private BASE_URL = "http://localhost:8080/code";
-  private id = localStorage.getItem("uid");
-  private getCodesURL: string = this.BASE_URL + `code/getcodelist/${this.id}`;
+  private email = localStorage.getItem("email");
+  private getCodesURL: string =
+    this.BASE_URL + `code/getcodelist/${this.email}`;
   private saveCodeURL = this.BASE_URL + "code/savecode";
   private runCodeURL = this.BASE_URL + "code/runcode";
 
@@ -25,6 +26,7 @@ export class codesService {
   }
 
   saveCode(code: any): Observable<any> {
+    console.log("wating");
     return this.http.post<any>(this.saveCodeURL, {
       body: code,
     });

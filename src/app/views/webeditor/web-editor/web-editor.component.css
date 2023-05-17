@@ -17,6 +17,15 @@
 
 }
 
+#expandButton {
+  z-index: 2;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 1em;
+
+}
+
+
 .changeEditorButtons {
   display: flex;
   justify-content: center;
@@ -45,7 +54,7 @@
 
 @media(min-width:47em) {
   .container {
-    grid-template-rows: 0.2fr 1fr 0.8fr;
+    grid-template-rows: 0.2fr 1.2fr 0.7fr;
   }
 
   .editors {
@@ -54,6 +63,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1em;
     margin-top: 1em;
+    margin-bottom: 0;
 
   }
 

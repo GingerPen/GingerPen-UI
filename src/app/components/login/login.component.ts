@@ -29,20 +29,27 @@ export class LoginComponent implements OnInit {
     if (heading) {
       heading.textContent = "Signing In..";
     }
-    try {
-      this.auth.login(this.data, this.password).subscribe((res) => {
+
+    this.auth.login(this.data, this.password).subscribe(
+      (res) => {
         console.log(res);
         localStorage.setItem("UserName", res.data.name);
         localStorage.setItem("uid", res.data._id);
+        localStorage.setItem("email", res.data.email);
         this.router.navigate(["/home"]);
-      });
-    } catch (error) {
-      console.log("error:" + error);
-    }
+        console.log("sup");
+      },
+      (error) => {
+        console.log("error:" + error);
 
-    // localStorage.setItem("UserName", this.data);
-    // localStorage.setItem("uid", this.password);
-    // this.router.navigate(["/home"]);
+        if (heading) {
+          heading.textContent = "Try Again...";
+          setTimeout(() => {
+            heading.textContent = "Login";
+          }, 800);
+        }
+      }
+    );
   }
 
   constructor(

@@ -19,7 +19,7 @@
     </div>
 
 
-    <div class="info" *ngIf="!isLoggedIn || !codesLength">
+    <div class="info" *ngIf="!codesLength">
       <h1>GingerPen</h1>
       <h2>Write, Edit, Run......</h2>
       <p>Use GingerPen to write run and edit your code on the go!</p>
@@ -35,7 +35,7 @@
     </div>
 
 
-    <div class="info" *ngIf="isLoggedIn"
+    <div class="info" *ngIf="codesLength"
       [ngStyle]="{'flex-direction': isLoggedIn ? 'row' : 'column','max-width' : '100%'  } ">
 
       <span (click)="openCodeEditor($event)">

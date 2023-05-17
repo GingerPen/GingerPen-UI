@@ -28,6 +28,6 @@ export class WebsocketService {
   }
 
   removeSocket() {
-    this.socket.removeSocket();
+    this.socket.disconnect();
   }
 }

@@ -14,6 +14,7 @@ export class WebEditorComponent implements OnInit, OnChanges {
   jsCode: string = "/* Javascript Goes here */";
   code: string = "";
   language: string = "html";
+  outputWindowExpanded: boolean = false;
 
   editorButtons: boolean = true;
   htmlEditorOptions = { theme: "vs-dark", language: "html" };
@@ -46,7 +47,6 @@ export class WebEditorComponent implements OnInit, OnChanges {
         this.jsCode +
         "</script>"
     );
-    
   }
 
   ngOnChanges() {
@@ -71,6 +71,27 @@ export class WebEditorComponent implements OnInit, OnChanges {
         this.div3 = true;
         break;
     }
+  }
+
+  expandWindow() {
+    this.outputWindowExpanded = !this.outputWindowExpanded;
+    const expandButton = document.getElementById("expandButton")!;
+    const outputWindow = document.getElementById("codeOutput")!;
+    if (this.outputWindowExpanded) {
+      outputWindow.style.position = "absolute";
+      expandButton.style.position = "absolute";
+      expandButton.style.right = "0";
+      expandButton.style.top = "0";
+      expandButton.innerText = "Collapse Window";
+      expandButton.style.background = "red";
+
+      return;
+    }
+    outputWindow.style.position = "relative";
+    expandButton.style.position = "relative";
+    expandButton.style.background = "#00394F";
+    expandButton.className = "expandButtonCollapsed";
+    expandButton.innerText = "Expand Window";
   }
 
   @HostListener("window:resize", ["$event"])

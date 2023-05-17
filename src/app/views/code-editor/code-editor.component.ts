@@ -90,6 +90,10 @@ export class CodeEditorComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.WebsocketService.removeSocket();
+  }
+
   copyToClipboard() {
     navigator.clipboard.writeText(window.location.href);
     const elem = document.getElementById("clipboardButton")!;
@@ -100,20 +104,40 @@ export class CodeEditorComponent implements OnInit {
   }
 
   saveCode() {
+    const elem = document.getElementById("savecode-button")!;
+    elem.innerText = "Saving...";
+    elem.style.color = "yellow";
     this.codeService
       .saveCode({
         userId: this.uid,
         codes: [{ format: this.lang, code: this.code }],
         isAuthorised: true,
       })
-      .subscribe((data) => {
-        this.output = data.message;
-      });
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.output = data.message;
+          elem.innerText = "Saved Successfully";
+          elem.style.color = "yellowgreen";
+          setTimeout(() => {
+            elem.innerText = "Save";
+            elem.style.color = "white";
+          }, 1000);
+        },
+        (error) => {
+          console.log(error);
+          elem.innerText = "Failed to Save";
+          elem.style.color = "yellowgreen";
+          setTimeout(() => {
+            elem.innerText = "Save";
+            elem.style.color = "white";
+          }, 1000);
+        }
+      );
   }
 
   syncCode() {
     if (this.check == true) {
-      console.log("worked");
       // setTimeout(() => {
       this.WebsocketService.emit("typed", {
         code: this.code,
@@ -162,6 +186,4 @@ export class CodeEditorComponent implements OnInit {
       this.outputWindow = false;
     }
   }
-
-  ngOnDestroy() {}
 }

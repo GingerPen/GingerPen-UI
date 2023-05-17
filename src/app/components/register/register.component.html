@@ -1,7 +1,7 @@
 <div class="container">
   <app-top-navbar></app-top-navbar>
   <div class="register-container">
-    <h2>Sign Up!</h2>
+    <h2 class="signup-heading">Sign Up!</h2>
     <form (ngSubmit)="register()" #registerForm="ngForm">
       <input required type="text" placeholder="Email" name="email" [(ngModel)]="userDetails.email" />
       <input required type="text" placeholder="Name" name="name" [(ngModel)]="userDetails.name" />

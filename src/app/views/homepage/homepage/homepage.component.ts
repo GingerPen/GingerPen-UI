@@ -16,7 +16,7 @@ export class HomepageComponent implements OnInit {
   isLoggedIn: boolean;
   userName: string = localStorage.getItem("UserName") ?? "Untitled";
   codes: Codes[] = [];
-  codesLength = this.codes.length;
+  codesLength: number = 0;
 
   array = [
     { type: "C", code: "public static void main" },
@@ -34,9 +34,12 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.codesService.getCodes().subscribe((data) => {
-      this.codes = data.codes;
-    });
+    if (this.isLoggedIn) {
+      this.codesService.getCodes().subscribe((data) => {
+        this.codes = data.codes.reverse();
+        this.codesLength = data.codes.length;
+      });
+    }
   }
 
   openCodeEditor(e: any) {
